@@ -1,0 +1,159 @@
+<div>
+  <input type="radio" id="loginForm" [(ngModel)]="loginForm" [value]="1" />
+  Login Form
+  <input
+    type="radio"
+    id="regisForm"
+    [(ngModel)]="loginForm"
+    [value]="2"
+  />Registration Form
+</div>
+
+<div *ngIf="loginForm === 2" id="login">
+  <h1>Login Form</h1>
+  <label>UserName:</label>
+  <input
+    [(ngModel)]="userLogin.userName"
+    type="text"
+    name="userName"
+    [value]="userLogin.userName"
+  /><br />
+  <label>Password:</label>
+  <input
+    [(ngModel)]="userLogin.password"
+    name="password"
+    type="password"
+    id="password"
+    [value]="userLogin.password"
+  />
+
+  <div>
+    <button (click)="loginClick()">login</button>
+    <button (click)="cancelClick()">cancel</button>
+  </div>
+</div>
+
+<div *ngIf="loginForm === 1">
+  <h1>Registration Form</h1>
+  <label>User Name :</label>
+  <input
+    [(ngModel)]="userLogin.userName"
+    type="text"
+    appMynumber
+    name="userName"
+    [value]="userLogin.userName"
+  /><br />
+  <label>Password:</label>
+  <input
+    [(ngModel)]="userLogin.password"
+    name="password"
+    type="password"
+    [value]="userLogin.password"
+  />
+
+  <label>Address:</label>
+  <input
+    [(ngModel)]="userLogin.address"
+    name="password"
+    type="text"
+    [value]="userLogin.address"
+  />
+
+  <label>Mobile No:</label>
+  <input
+    [(ngModel)]="userLogin.mobileNo"
+    name="mobileNo"
+    type="text"
+    [value]="userLogin.mobileNo"
+  />
+  <div>
+    <button (click)="loginClick()">Submit</button>
+    <button (click)="cancelClick()">cancel</button>
+  </div>
+</div>
+
+<br />
+<div>
+  <select>
+    <option *ngFor="let country of countryList" [value]="country.code">{{
+      country.name
+    }}</option>
+  </select>
+</div>
+<br />
+<div class="row">
+  <h1>User List</h1>
+  <table border="1">
+    <tr>
+      <th>UserName</th>
+      <th>Email</th>
+      <th>Mobile No</th>
+      <th>Address</th>
+      <th>Date Of Birth</th>
+      <th>Salary</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <tr *ngFor="let user of userList">
+      <td>{{ user.userName | titlecase }}</td>
+      <td>{{user.email | uppercase }}</td>
+      <td *ngIf="user.mobileNo !== '123451'; else elseContent">
+        {{ user.mobileNo }}
+      </td>
+      <td>{{ user.address }}</td>
+      <td>{{ user.dateOfBirth | date:'MM/dd/yyyy'  }}</td>
+      <td>{{ user.salary | currency :'AED':true }}</td>
+      <td><a [href]="user.id">Edit</a></td>
+      <td><a [href]="user.id">Delete</a></td>
+    </tr>
+  </table>
+</div>
+
+<!-- <div *ngIf="content !=1; else elseContent1">
+  <h2>Div  1 for if par....</h2>
+</div> -->
+
+<!-- <div *ngIf="content===2; else elseContent2">
+    <h2>Div 1 for if par....</h2>
+  </div>
+
+  <div *ngIf="content===3; else elseContent3">
+      <h2>Div 1 for if par....</h2>
+    </div> -->
+
+<ng-template #elseContent>
+  <div><h2>Div dddddd 1 for if part....</h2></div>
+</ng-template>
+
+<!-- <ng-template #elseContent2>
+  <div><h2>Div  ffff 2 for if part....</h2></div>
+</ng-template>
+
+
+<ng-template #elseContent3>
+    <div><h2>Div  eeee 3 for if part....</h2></div>
+  </ng-template> -->
+
+<h1 appMyhighlight>Welcome to Angular 7 class</h1>
+
+<input  appMynumber type="text" />
+
+<br />
+<br />
+<br />
+<br />
+
+{{userTitle}}
+<br />
+<p>{{ userTitle | uppercase}}</p>
+
+<p>{{ amount | currency:"INR":true}}</p>
+{{dataAmount}}
+<br />
+<b>{{ dataAmount | number: '3.2-2' }}</b>
+<br />
+<br />
+<br />
+<br />
+
+
