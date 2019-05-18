@@ -20,5 +20,6 @@ export class MyhighlightDirective {
 
   private highlight(color: string) {
     this.el.nativeElement.style.backgroundColor = color;
+    this.el.nativeElement.style.fontSize = 20;
   }
 }

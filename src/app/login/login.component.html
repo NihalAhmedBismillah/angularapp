@@ -74,7 +74,7 @@
 
 <br />
 <div>
-  <select>
+  <select (change)="selectedCountry($event)">
     <option *ngFor="let country of countryList" [value]="country.code">{{
       country.name
     }}</option>
@@ -96,13 +96,13 @@
     </tr>
     <tr *ngFor="let user of userList">
       <td>{{ user.userName | titlecase }}</td>
-      <td>{{user.email | uppercase }}</td>
+      <td>{{ user.email | uppercase }}</td>
       <td *ngIf="user.mobileNo !== '123451'; else elseContent">
         {{ user.mobileNo }}
       </td>
-      <td>{{ user.address }}</td>
-      <td>{{ user.dateOfBirth | date:'MM/dd/yyyy'  }}</td>
-      <td>{{ user.salary | currency :'AED':true }}</td>
+      <td appMyhighlight>{{ user.address }}</td>
+      <td>{{ user.dateOfBirth | date: "MM/dd/yyyy" }}</td>
+      <td>{{ user.salary | currency: "AED":true }}</td>
       <td><a [href]="user.id">Edit</a></td>
       <td><a [href]="user.id">Delete</a></td>
     </tr>
@@ -136,24 +136,24 @@
 
 <h1 appMyhighlight>Welcome to Angular 7 class</h1>
 
-<input  appMynumber type="text" />
+<input appMynumber type="text" />
 
 <br />
 <br />
 <br />
 <br />
 
-{{userTitle}}
+{{ userTitle }}
 <br />
-<p>{{ userTitle | uppercase}}</p>
+<p>{{ userTitle | uppercase }}</p>
 
-<p>{{ amount | currency:"INR":true}}</p>
-{{dataAmount}}
+<p>{{ amount | currency: "INR":true }}</p>
+{{ dataAmount }}
 <br />
-<b>{{ dataAmount | number: '3.2-2' }}</b>
-<br />
-<br />
-<br />
-<br />
+<b>{{ dataAmount | number: "3.2-2" }}</b>
+<p> This is reserve pipe: nihal ahmed  {{ 'nihal ahmed' | reverse : 'capital': true :'test1':'test2'}}</p>
 
-
+<br />
+<br />
+<br />
+<br />

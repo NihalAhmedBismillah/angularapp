@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   countryList = StaticData.countryList;
   userTitle = "nihal ahmed";
   amount = 200.3;
-  dataAmount  = 454.78787814;
+  dataAmount = 454.78787814;
 
   ngOnInit() {
     for (let i = 0; i < 10; i++) {
@@ -32,6 +32,10 @@ export class LoginComponent implements OnInit {
       user.salary = 2000 + i + 0.4;
       this.userList.push(user);
     }
+  }
+
+  selectedCountry(event: KeyboardEvent) {
+    console.log("data: ", (<HTMLInputElement>event.target).value);
   }
 
   loginClick() {
