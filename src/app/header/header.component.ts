@@ -27,4 +27,8 @@ export class HeaderComponent implements OnInit {
   navigateContactUs() {
     this.router.navigate(["./contactus"]);
   }
+
+  navigateCreateUser() {
+    this.router.navigate(["./createuser"]);
+  }
 }

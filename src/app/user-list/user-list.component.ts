@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserLogin } from "./../models/login";
-
+import {LoginService} from './../appservices/loginservice.service';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -9,20 +9,12 @@ import { UserLogin } from "./../models/login";
 export class UserListComponent implements OnInit {
 
   userList: Array<UserLogin> = new Array<UserLogin>();
-  constructor() { }
+  constructor(private loginService:LoginService) { }
 
   ngOnInit() {
-    for (let i = 0; i < 10; i++) {
-      let user: UserLogin = new UserLogin();
-      user.id = i + 1;
-      user.address = "203/40 Near BED School Pune India : " + i;
-      user.email = "test1@gmail.com: " + i;
-      user.mobileNo = "12345" + i;
-      user.userName = "Nihal Ahmed: " + i;
-      user.dateOfBirth = new Date().toISOString();
-      user.salary = 2000 + i + 0.4;
-      this.userList.push(user);
-    }
+    this.loginService.getAllUser().subscribe((data:Array<UserLogin>)=>{
+       this.userList= data
+    });
   }
 
 }

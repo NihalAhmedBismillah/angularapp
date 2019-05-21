@@ -1,0 +1,40 @@
+<div >
+  <h1>Registration Form</h1>
+  <label>User Name :</label>
+  <input
+    [(ngModel)]="userLogin.userName"
+    type="text"
+    appMynumber
+    name="userName"
+    [value]="userLogin.userName"
+  /><br />
+  <label>Password:</label>
+  <input
+    [(ngModel)]="userLogin.password"
+    name="password"
+    type="password"
+    [value]="userLogin.password"
+  />
+
+  <label>Address:</label>
+  <input
+    [(ngModel)]="userLogin.address"
+    name="password"
+    type="text"
+    [value]="userLogin.address"
+  />
+
+  <label>Mobile No:</label>
+  <input
+    [(ngModel)]="userLogin.mobileNo"
+    name="mobileNo"
+    type="text"
+    [value]="userLogin.mobileNo"
+  />
+  <div>
+    <button (click)="submit()">Submit</button>
+    <button (click)="cancel()">Cancel</button>
+  </div>
+  <p>{{successMessage | json}}</p>
+
+</div>

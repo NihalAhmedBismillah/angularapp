@@ -4,7 +4,9 @@
   <div *ngIf="message">Welcome to {{ message.name }} and my address is : {{message.address}}</div>
   <div *ngIf="!message">Welcome to Guest</div>
   <br />
-  <app-child2 (messageEvent)="reveiveMessage($event)"></app-child2>
+  <!-- <app-child2 (messageEvent)="reveiveMessage($event)"></app-child2> -->
 
   <br />
+  <p>{{loginService.myDataServiceData | json}}</p>
+  <button  (click) = "clickMe()" >Click Me</button>
 </div>
