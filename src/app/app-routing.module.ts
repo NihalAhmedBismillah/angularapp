@@ -6,6 +6,8 @@ import { ContactusComponent } from "./contactus/contactus.component";
 import { AboutusComponent } from "./aboutus/aboutus.component";
 import { UserListComponent } from './user-list/user-list.component';
 import { CreateuserComponent } from './createuser/createuser.component';
+import { EdituserComponent } from './edituser/edituser.component';
+import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   {
@@ -18,7 +20,9 @@ const routes: Routes = [
   { path: "contactus", component: ContactusComponent },
   { path: "aboutus", component: AboutusComponent },
   { path: "userlist", component: UserListComponent },
-  { path: "createuser", component: CreateuserComponent }
+  { path: "createuser", component: CreateuserComponent },
+  { path: "edituser/:id", component: EdituserComponent  },
+  { path: "**", component: ErrorComponent }
 ];
 
 @NgModule({

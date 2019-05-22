@@ -16,5 +16,9 @@ export class UserListComponent implements OnInit {
        this.userList= data
     });
   }
+  getUrl(id:number):string{
+    return `edituser/${id}`;
+  }
+
 
 }

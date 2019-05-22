@@ -21,6 +21,8 @@ import { Child2Component } from './child2/child2.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateuserComponent } from './createuser/createuser.component';
+import { EdituserComponent } from './edituser/edituser.component';
+import { ErrorComponent } from './error/error.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { CreateuserComponent } from './createuser/createuser.component';
     Parent3Component,
     Child2Component,
     UserListComponent,
-    CreateuserComponent
+    CreateuserComponent,
+    EdituserComponent,
+    ErrorComponent
 
   ],
   imports: [

@@ -25,7 +25,7 @@ export class LoginService {
   }
 
   getUserById(userId: number): Observable<any> {
-    return this.http.get('')
+    return this.http.get('http://localhost:8080/user/'+userId)
   }
 
   createUser(postPayload): Observable<any> {

@@ -31,8 +31,6 @@ let data = [
     }
 ]
 
-
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
@@ -57,8 +55,19 @@ app.get('/user', (req, res) => {
     res.send(data);
 })
 
+
+app.get('/user/:id', (req, res) => {
+
+    const userId = req.params['id'];
+    console.log('user Id', userId)
+    let userData = data.filter(user => user.id = userId)[0];  // [2]
+    console.log('user data', JSON.stringify(userData))
+    res.send(userData)
+
+    //res.send(data);
+})
 app.post('/user', (req, res) => {
-    res.send({status:'success',code:'201'});
+    res.send({ status: true, code: '201' });
 })
 
 
