@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-//import { LoginComponent } from './login/login.component';
 import { MyhighlightDirective } from './directives/myhighlight.directive';
 import { MynumberDirective } from './directives/mynumber.directive';
 import { ReversePipe } from './reverse.pipe';
@@ -19,10 +18,16 @@ import { Parent2Component } from './parent2/parent2.component';
 import { Parent3Component } from './parent3/parent3.component';
 import { Child2Component } from './child2/child2.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { EdituserComponent } from './edituser/edituser.component';
 import { ErrorComponent } from './error/error.component';
+import { InternalservererrorComponent } from './internalservererror/internalservererror.component';
+import { Service1Component } from './services/service1/service1.component';
+import { Service2Component } from './services/service2/service2.component';
+import { Service3Component } from './services/service3/service3.component';
+import { Service4Component } from './services/service4/service4.component';
+import { AppInterceptor } from './interceptors/spinner.interceptors';
 
 
 @NgModule({
@@ -45,7 +50,12 @@ import { ErrorComponent } from './error/error.component';
     UserListComponent,
     CreateuserComponent,
     EdituserComponent,
-    ErrorComponent
+    ErrorComponent,
+    InternalservererrorComponent,
+    Service1Component,
+    Service2Component,
+    Service3Component,
+    Service4Component
 
   ],
   imports: [
@@ -54,7 +64,7 @@ import { ErrorComponent } from './error/error.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

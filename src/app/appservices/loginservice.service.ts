@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
-
+import { Injectable, ErrorHandler } from '@angular/core';
+import { HttpClientModule, HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { ErrorHandle } from './errorHandling';
+import { retry, catchError } from 'rxjs/operators';
+import { Router } from "@angular/router";
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +12,7 @@ export class LoginService {
 
   public myDataServiceData: any = null;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
 
   }
   getAllUser(): Observable<any> {
@@ -21,11 +22,11 @@ export class LoginService {
         'Content-Type': 'application/json'
       })
     };
-    return this.http.get(url, httpOptions);
+    return this.http.get(url, httpOptions).pipe(catchError(this.errorHandle));
   }
 
   getUserById(userId: number): Observable<any> {
-    return this.http.get('http://localhost:8080/user/'+userId)
+    return this.http.get('http://localhost:8080/user/' + userId)
   }
 
   createUser(postPayload): Observable<any> {
@@ -35,7 +36,7 @@ export class LoginService {
         'Content-Type': 'application/json'
       })
     };
-    return this.http.post(url,postPayload , httpOptions)
+    return this.http.post(url, postPayload, httpOptions).pipe(catchError(ErrorHandle.errorHandle));
   }
 
   updateUser(putPayload): Observable<any> {
@@ -43,6 +44,10 @@ export class LoginService {
   }
 
 
+  errorHandle(errorMessage: HttpErrorResponse) {
+    console.log('Error From Server : ', errorMessage);
+    this.router.navigate(["./error"]);
+    return throwError(errorMessage);
 
-
+  }
 }

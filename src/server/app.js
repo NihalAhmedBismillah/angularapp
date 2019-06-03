@@ -52,7 +52,13 @@ app.get('/', (req, res) => {
 })
 
 app.get('/user', (req, res) => {
-    res.send(data);
+
+   //  res.sendStatus(500);
+   // res.sendStatus(500).send({error:{message:'internal server error'}});
+    setTimeout(() => {
+        res.send(data);
+    }, 200);
+   
 })
 
 
